@@ -98,21 +98,19 @@ export function Footer() {
                   Email
                 </a>
               </li>
-              {RESUME_URL && (
-                <li>
-                  <a
-                    href={RESUME_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-pixel-text-light/70 dark:text-pixel-text-dark/70
-                               hover:text-pixel-accent transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-pixel-accent"
-                    aria-label="View resume (opens in new tab)"
-                  >
-                    <FileText className="w-4 h-4 shrink-0" aria-hidden="true" />
-                    Resume
-                  </a>
-                </li>
-              )}
+              <li>
+                <a
+                  href={RESUME_URL ?? '#'}
+                  target={RESUME_URL ? '_blank' : undefined}
+                  rel={RESUME_URL ? 'noopener noreferrer' : undefined}
+                  className="flex items-center gap-2 text-sm text-pixel-text-light/70 dark:text-pixel-text-dark/70
+                             hover:text-pixel-accent transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-pixel-accent"
+                  aria-label="View resume (opens in new tab)"
+                >
+                  <FileText className="w-4 h-4 shrink-0" aria-hidden="true" />
+                  Resume
+                </a>
+              </li>
             </ul>
           </div>
         </div>

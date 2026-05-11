@@ -74,20 +74,18 @@ export function Navbar({ theme, toggleTheme }) {
               );
             })}
 
-            {RESUME_URL && (
-              <a
-                href={RESUME_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-2 flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium
-                           border-2 border-pixel-accent text-pixel-accent hover:bg-pixel-accent hover:text-white
-                           transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pixel-accent"
-                aria-label="View resume (opens in new tab)"
-              >
-                <FileText className="w-3.5 h-3.5" aria-hidden="true" />
-                Resume
-              </a>
-            )}
+            <a
+              href={RESUME_URL ?? '#'}
+              target={RESUME_URL ? '_blank' : undefined}
+              rel={RESUME_URL ? 'noopener noreferrer' : undefined}
+              className="ml-2 flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium
+                         border-2 border-pixel-accent text-pixel-accent hover:bg-pixel-accent hover:text-white
+                         transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pixel-accent"
+              aria-label="View resume (opens in new tab)"
+            >
+              <FileText className="w-3.5 h-3.5" aria-hidden="true" />
+              Resume
+            </a>
 
             <motion.button
               onClick={toggleTheme}
@@ -108,17 +106,15 @@ export function Navbar({ theme, toggleTheme }) {
 
           {/* Mobile controls */}
           <div className="md:hidden flex items-center gap-2">
-            {RESUME_URL && (
-              <a
-                href={RESUME_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-pixel-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pixel-accent"
-                aria-label="View resume"
-              >
-                <FileText className="w-5 h-5" aria-hidden="true" />
-              </a>
-            )}
+            <a
+              href={RESUME_URL ?? '#'}
+              target={RESUME_URL ? '_blank' : undefined}
+              rel={RESUME_URL ? 'noopener noreferrer' : undefined}
+              className="p-2 text-pixel-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pixel-accent"
+              aria-label="View resume"
+            >
+              <FileText className="w-5 h-5" aria-hidden="true" />
+            </a>
 
             <motion.button
               onClick={toggleTheme}

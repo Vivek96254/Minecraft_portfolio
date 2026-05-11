@@ -159,20 +159,19 @@ export function Hero() {
                 View Projects
               </motion.a>
 
-              {RESUME_URL && (
-                <motion.a
-                  href={RESUME_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pixel-btn-secondary flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  aria-label="View resume (opens in new tab)"
-                >
-                  <FileText className="w-4 h-4" aria-hidden="true" />
-                  Resume
-                </motion.a>
-              )}
+              <motion.a
+                href={RESUME_URL || undefined}
+                target={RESUME_URL ? '_blank' : undefined}
+                rel={RESUME_URL ? 'noopener noreferrer' : undefined}
+                className={`pixel-btn-secondary flex items-center justify-center gap-2 ${!RESUME_URL ? 'opacity-50 cursor-not-allowed' : ''}`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                aria-label="View resume (opens in new tab)"
+                aria-disabled={!RESUME_URL}
+              >
+                <FileText className="w-4 h-4" aria-hidden="true" />
+                Resume
+              </motion.a>
 
               <motion.a
                 href={SOCIAL_LINKS.github}
