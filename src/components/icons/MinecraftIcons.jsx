@@ -163,6 +163,13 @@ export const HeartIcon = ({ className = "w-8 h-8" }) => (
 );
 
 export const MinecraftAvatarIcon = ({ className = "w-32 h-32" }) => (
+  // Netherite armour set — proper 32×32 Minecraft character proportions.
+  // Palette:
+  //   #1C1920 deep shadow/outline   #2A2732 dark plate body
+  //   #3A3647 main plate            #4C4860 lighter plate face
+  //   #625E78 edge highlight        #7E7994 bright highlight
+  //   #483460 dark purple trim      #6A4E88 purple accent
+  //   #9370B8 bright purple detail  #C8A882 skin  #A87E5A skin shadow
   <svg
     className={className}
     viewBox="0 0 32 32"
@@ -171,40 +178,139 @@ export const MinecraftAvatarIcon = ({ className = "w-32 h-32" }) => (
     style={{ imageRendering: 'pixelated' }}
     aria-hidden="true"
   >
-    {/* Head */}
-    <rect x="10" y="2" width="12" height="12" fill="#C68642" />
-    {/* Hair */}
-    <rect x="10" y="2" width="12" height="3" fill="#2D1B00" />
-    <rect x="10" y="5" width="2" height="1" fill="#2D1B00" />
-    <rect x="20" y="5" width="2" height="1" fill="#2D1B00" />
-    {/* Skin highlight */}
-    <rect x="12" y="5" width="4" height="2" fill="#D4954A" />
-    {/* Eyes */}
-    <rect x="12" y="8" width="2" height="2" fill="#3D2000" />
-    <rect x="18" y="8" width="2" height="2" fill="#3D2000" />
-    {/* Eye shine */}
-    <rect x="13" y="8" width="1" height="1" fill="#FFFFFF" />
-    <rect x="19" y="8" width="1" height="1" fill="#FFFFFF" />
-    {/* Mouth */}
-    <rect x="13" y="11" width="6" height="1" fill="#A0522D" />
-    {/* Body — green shirt */}
-    <rect x="8" y="14" width="16" height="10" fill="#4A8C5E" />
-    {/* Body highlight */}
-    <rect x="9" y="14" width="6" height="1" fill="#5BA36F" />
-    {/* Collar */}
-    <rect x="13" y="14" width="6" height="2" fill="#D4954A" />
-    {/* Arms */}
-    <rect x="4" y="14" width="4" height="10" fill="#C68642" />
-    <rect x="24" y="14" width="4" height="10" fill="#C68642" />
-    {/* Arm highlight */}
-    <rect x="5" y="14" width="2" height="2" fill="#D4954A" />
-    <rect x="25" y="14" width="2" height="2" fill="#D4954A" />
-    {/* Legs — dark pants */}
-    <rect x="8" y="24" width="7" height="6" fill="#345EC3" />
-    <rect x="17" y="24" width="7" height="6" fill="#345EC3" />
-    {/* Boots */}
-    <rect x="8" y="28" width="7" height="2" fill="#1A1814" />
-    <rect x="17" y="28" width="7" height="2" fill="#1A1814" />
+    {/* ── HELMET (head 8×8 centred at x=12, y=0; cheekguards add ±1) ── */}
+
+    {/* Helmet shell */}
+    <rect x="12" y="0" width="8" height="9" fill="#3A3647"/>
+    {/* Cheek guards */}
+    <rect x="11" y="1" width="1" height="7" fill="#2A2732"/>
+    <rect x="20" y="1" width="1" height="7" fill="#4C4860"/>
+    {/* Top highlight strip */}
+    <rect x="12" y="0" width="8" height="1" fill="#625E78"/>
+    {/* Left shadow edge */}
+    <rect x="12" y="0" width="1" height="9" fill="#1C1920"/>
+    {/* Right highlight edge */}
+    <rect x="19" y="0" width="1" height="9" fill="#4C4860"/>
+
+    {/* Visor opening — shows skin + glowing eyes */}
+    <rect x="13" y="2" width="6" height="5" fill="#C8A882"/>
+    {/* Visor top bar */}
+    <rect x="12" y="2" width="8" height="1" fill="#1C1920"/>
+    {/* Visor side bars */}
+    <rect x="12" y="2" width="1" height="5" fill="#1C1920"/>
+    <rect x="19" y="2" width="1" height="5" fill="#2A2732"/>
+    {/* Mid-visor divider */}
+    <rect x="13" y="4" width="6" height="1" fill="#2A2732"/>
+    {/* Left eye glow */}
+    <rect x="13" y="3" width="2" height="1" fill="#483460"/>
+    <rect x="14" y="3" width="1" height="1" fill="#9370B8"/>
+    {/* Right eye glow */}
+    <rect x="17" y="3" width="2" height="1" fill="#483460"/>
+    <rect x="17" y="3" width="1" height="1" fill="#9370B8"/>
+    {/* Chin/nose area */}
+    <rect x="14" y="5" width="4" height="1" fill="#A87E5A"/>
+    {/* Chin guard */}
+    <rect x="12" y="7" width="8" height="2" fill="#2A2732"/>
+    <rect x="13" y="7" width="6" height="1" fill="#1C1920"/>
+
+    {/* Helmet purple trim */}
+    <rect x="12" y="0" width="8" height="1" fill="#6A4E88"/>
+    <rect x="11" y="1" width="1" height="6" fill="#6A4E88"/>
+    <rect x="20" y="1" width="1" height="6" fill="#483460"/>
+    <rect x="12" y="8" width="8" height="1" fill="#483460"/>
+
+    {/* ── CHESTPLATE (body 8×12 at x=12,y=9; plate extends to x=10) ── */}
+
+    {/* Main chest plate */}
+    <rect x="10" y="9" width="12" height="12" fill="#3A3647"/>
+    {/* Top highlight */}
+    <rect x="10" y="9" width="12" height="1" fill="#625E78"/>
+    {/* Left shadow */}
+    <rect x="10" y="9" width="1" height="12" fill="#1C1920"/>
+    {/* Right highlight */}
+    <rect x="21" y="9" width="1" height="12" fill="#4C4860"/>
+    {/* Centre sternum ridge */}
+    <rect x="15" y="9" width="2" height="12" fill="#2A2732"/>
+    {/* Horizontal plate seams */}
+    <rect x="11" y="13" width="10" height="1" fill="#2A2732"/>
+    <rect x="11" y="17" width="10" height="1" fill="#2A2732"/>
+
+    {/* Shoulder pad — left (painted over arm top) */}
+    <rect x="8"  y="9" width="2" height="4" fill="#3A3647"/>
+    <rect x="8"  y="9" width="2" height="1" fill="#625E78"/>
+    <rect x="8"  y="9" width="1" height="4" fill="#1C1920"/>
+    {/* Shoulder pad — right */}
+    <rect x="22" y="9" width="2" height="4" fill="#3A3647"/>
+    <rect x="22" y="9" width="2" height="1" fill="#625E78"/>
+    <rect x="23" y="9" width="1" height="4" fill="#4C4860"/>
+
+    {/* Chest purple trim details */}
+    <rect x="10" y="9"  width="12" height="1" fill="#9370B8"/>
+    <rect x="13" y="11" width="2"  height="1" fill="#483460"/>
+    <rect x="17" y="11" width="2"  height="1" fill="#483460"/>
+    <rect x="13" y="15" width="2"  height="1" fill="#483460"/>
+    <rect x="17" y="15" width="2"  height="1" fill="#483460"/>
+    <rect x="13" y="19" width="2"  height="1" fill="#483460"/>
+    <rect x="17" y="19" width="2"  height="1" fill="#483460"/>
+
+    {/* ── LEFT ARM (4×12 at x=6, y=9) ── */}
+    <rect x="6" y="9" width="4" height="12" fill="#3A3647"/>
+    <rect x="6" y="9" width="4" height="1"  fill="#4C4860"/>
+    <rect x="6" y="9" width="1" height="12" fill="#1C1920"/>
+    <rect x="9" y="9" width="1" height="12" fill="#4C4860"/>
+    {/* Arm plate seams */}
+    <rect x="6" y="13" width="4" height="1" fill="#2A2732"/>
+    <rect x="6" y="17" width="4" height="1" fill="#2A2732"/>
+    {/* Purple trim */}
+    <rect x="7" y="10" width="2" height="1" fill="#483460"/>
+
+    {/* ── RIGHT ARM (4×12 at x=22, y=9) ── */}
+    <rect x="22" y="9" width="4" height="12" fill="#3A3647"/>
+    <rect x="22" y="9" width="4" height="1"  fill="#4C4860"/>
+    <rect x="22" y="9" width="1" height="12" fill="#1C1920"/>
+    <rect x="25" y="9" width="1" height="12" fill="#4C4860"/>
+    <rect x="22" y="13" width="4" height="1" fill="#2A2732"/>
+    <rect x="22" y="17" width="4" height="1" fill="#2A2732"/>
+    <rect x="23" y="10" width="2" height="1" fill="#483460"/>
+
+    {/* ── LEGGINGS (left leg 6×9 at x=10; right 6×9 at x=16) ── */}
+
+    {/* Left leg */}
+    <rect x="10" y="21" width="6" height="9" fill="#2A2732"/>
+    <rect x="10" y="21" width="6" height="1" fill="#3A3647"/>
+    <rect x="10" y="21" width="1" height="9" fill="#1C1920"/>
+    <rect x="15" y="21" width="1" height="9" fill="#3A3647"/>
+    <rect x="11" y="25" width="5" height="1" fill="#1C1920"/>
+    {/* Purple trim */}
+    <rect x="11" y="22" width="3" height="1" fill="#483460"/>
+    <rect x="11" y="26" width="3" height="1" fill="#483460"/>
+
+    {/* Right leg */}
+    <rect x="16" y="21" width="6" height="9" fill="#2A2732"/>
+    <rect x="16" y="21" width="6" height="1" fill="#3A3647"/>
+    <rect x="16" y="21" width="1" height="9" fill="#1C1920"/>
+    <rect x="21" y="21" width="1" height="9" fill="#3A3647"/>
+    <rect x="16" y="25" width="5" height="1" fill="#1C1920"/>
+    <rect x="17" y="22" width="3" height="1" fill="#483460"/>
+    <rect x="17" y="26" width="3" height="1" fill="#483460"/>
+
+    {/* Crotch gap */}
+    <rect x="15" y="21" width="2" height="2" fill="#1C1920"/>
+
+    {/* ── BOOTS (1px wider than leg on each side) ── */}
+
+    {/* Left boot */}
+    <rect x="9"  y="30" width="7" height="2" fill="#2A2732"/>
+    <rect x="10" y="30" width="5" height="1" fill="#6A4E88"/>
+    <rect x="9"  y="31" width="7" height="1" fill="#1C1920"/>
+    <rect x="9"  y="30" width="1" height="2" fill="#1C1920"/>
+    <rect x="15" y="30" width="1" height="2" fill="#3A3647"/>
+
+    {/* Right boot */}
+    <rect x="16" y="30" width="7" height="2" fill="#2A2732"/>
+    <rect x="17" y="30" width="5" height="1" fill="#6A4E88"/>
+    <rect x="16" y="31" width="7" height="1" fill="#1C1920"/>
+    <rect x="16" y="30" width="1" height="2" fill="#1C1920"/>
+    <rect x="22" y="30" width="1" height="2" fill="#3A3647"/>
   </svg>
 );
-

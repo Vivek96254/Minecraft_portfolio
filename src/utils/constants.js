@@ -30,6 +30,7 @@ export const FEATURED_PROJECTS = [
   {
     id: 'quickmart',
     name: 'QuickMart',
+    iconSrc: '/icons/quickmart.png',
     description:
       'Production-grade quick-commerce platform (Blinkit-style). NestJS REST API, Next.js 14 web app, React Native + Expo mobile app, real-time Socket.IO order tracking, and Stripe + Razorpay payment processing.',
     features: [
@@ -46,6 +47,7 @@ export const FEATURED_PROJECTS = [
   {
     id: 'repo-pilot',
     name: 'Repo Pilot',
+    iconSrc: '/icons/repo-pilot.png',
     description:
       'AI-native CLI agent for autonomous codebase understanding. Implements a custom PLAN→EXECUTE→VERIFY→REFLECT loop — no LangChain, no abstractions. Durable SQLite memory, typed tool registry, and multi-provider LLM support (OpenAI, Anthropic, Cerebras).',
     features: [
@@ -66,6 +68,7 @@ export const OTHER_PROJECTS = [
   {
     id: 'fraud-lens',
     name: 'Fraud Lens',
+    iconSrc: '/icons/fraud-lens.png',
     description:
       'Enterprise transaction risk engine in Go. Hybrid Redis Streams + Kafka CDC pipeline, rule engine + behavioral z-score + ML scoring, backtesting, and A/B experiments.',
     tech: ['Go', 'PostgreSQL', 'Redis Streams', 'Kafka', 'Docker', 'JWT'],
@@ -75,6 +78,7 @@ export const OTHER_PROJECTS = [
   {
     id: 'context-forge',
     name: 'Context Forge',
+    iconSrc: '/icons/context-forge.png',
     description:
       'Enterprise knowledge assistant with RAG (hybrid vector + BM25), RBAC, chunk-level citations, query rewriting, and observability. TypeScript + Python full-stack.',
     tech: ['TypeScript', 'Python', 'PostgreSQL', 'Redis', 'Docker', 'Celery'],
@@ -84,6 +88,7 @@ export const OTHER_PROJECTS = [
   {
     id: 'chess',
     name: 'Chess Multiplayer',
+    iconSrc: '/icons/chess.png',
     description:
       'Real-time multiplayer chess with WebSocket game sync, server-side move validation, spectator mode, and JWT session management.',
     tech: ['React', 'Node.js', 'WebSockets', 'PostgreSQL', 'Redis', 'JWT'],
@@ -92,6 +97,7 @@ export const OTHER_PROJECTS = [
   },
   {
     id: 'portfolio',
+    iconSrc: null,
     name: 'This Portfolio',
     description:
       'Minecraft-themed developer portfolio with React 19, pixel-art CSS component library, scroll-spy navigation, and Framer Motion animations.',

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ArrowDown, Mail, FileText } from 'lucide-react';
 import { SOCIAL_LINKS, RESUME_URL } from '../../utils/constants';
-import { DiamondIcon, MinecraftAvatarIcon } from '../icons/MinecraftIcons';
+import { DiamondIcon } from '../icons/MinecraftIcons';
 
 const CORNER_BLOCKS = [
   { top: '8%', left: '2%', size: 28, delay: 0 },
@@ -16,8 +16,6 @@ const CORNER_BLOCKS = [
 ];
 
 function AvatarFrame() {
-  const [imgError, setImgError] = useState(false);
-
   return (
     <div className="relative w-48 h-48 md:w-64 md:h-64">
       {/* Pixel border frame */}
@@ -25,19 +23,13 @@ function AvatarFrame() {
         className="absolute inset-0 border-8 border-pixel-border-light dark:border-pixel-border-dark
                     bg-pixel-card-light dark:bg-pixel-card-dark shadow-pixel overflow-hidden"
       >
-        {imgError ? (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-pixel-accent/10 to-mc-diamond/10">
-            <MinecraftAvatarIcon className="w-28 h-28 md:w-36 md:h-36" />
-          </div>
-        ) : (
-          <img
-            src="/avatar.webp"
-            alt="Vivek — Software Engineer"
-            className="w-full h-full object-cover"
-            onError={() => setImgError(true)}
-            loading="eager"
-          />
-        )}
+        <img
+          src="/avatar-netherite.png"
+          alt="Vivek — Software Engineer"
+          className="w-full h-full object-contain"
+          loading="eager"
+          style={{ imageRendering: 'pixelated' }}
+        />
       </div>
 
       {/* Corner accent blocks */}

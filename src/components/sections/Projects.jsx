@@ -2,13 +2,29 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, ArrowRight } from 'lucide-react';
 import { FEATURED_PROJECTS, OTHER_PROJECTS, SOCIAL_LINKS } from '../../utils/constants';
-import { RedstoneIcon, DiamondIcon, GrassIcon } from '../icons/MinecraftIcons';
+import { DiamondIcon, GrassIcon } from '../icons/MinecraftIcons';
 
-const heroIcons = [RedstoneIcon, GrassIcon];
+function ProjectIcon({ iconSrc, name, size = 'lg' }) {
+  const dim = size === 'lg' ? 'w-20 h-20 md:w-24 md:h-24' : 'w-10 h-10';
+  const imgDim = size === 'lg' ? 'w-14 h-14 md:w-16 md:h-16' : 'w-6 h-6';
+
+  return (
+    <div className={`inventory-slot ${dim} shrink-0`} aria-hidden="true">
+      {iconSrc ? (
+        <img
+          src={iconSrc}
+          alt=""
+          className={`${imgDim} object-contain`}
+          style={{ imageRendering: 'pixelated' }}
+        />
+      ) : (
+        <GrassIcon className={size === 'lg' ? 'w-10 h-10 md:w-12 md:h-12' : 'w-5 h-5'} />
+      )}
+    </div>
+  );
+}
 
 function FeaturedProjectCard({ project, index }) {
-  const IconComponent = heroIcons[index % heroIcons.length];
-
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -25,7 +41,6 @@ function FeaturedProjectCard({ project, index }) {
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="shrink-0">
           <motion.div
-            className="inventory-slot w-20 h-20 md:w-24 md:h-24"
             whileHover={{ scale: 1.05 }}
             animate={{
               boxShadow: [
@@ -35,9 +50,8 @@ function FeaturedProjectCard({ project, index }) {
               ],
             }}
             transition={{ duration: 2.5, repeat: Infinity }}
-            aria-hidden="true"
           >
-            <IconComponent className="w-10 h-10 md:w-12 md:h-12" />
+            <ProjectIcon iconSrc={project.iconSrc} name={project.name} size="lg" />
           </motion.div>
         </div>
 
@@ -121,9 +135,7 @@ function OtherProjectCard({ project, index }) {
       aria-label={`Project: ${project.name}`}
     >
       <div className="flex items-start gap-3 mb-3">
-        <div className="inventory-slot w-10 h-10 shrink-0" aria-hidden="true">
-          <DiamondIcon className="w-5 h-5" />
-        </div>
+        <ProjectIcon iconSrc={project.iconSrc} name={project.name} size="sm" />
         <h3 className="font-semibold text-sm leading-snug pt-1">{project.name}</h3>
       </div>
 
