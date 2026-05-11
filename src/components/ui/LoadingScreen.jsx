@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
 const loadingTexts = [
   'Building world...',
   'Loading chunks...',
   'Spawning projects...',
-  'Initializing skills...',
+  'Initialising skills...',
   'Ready to explore!',
 ];
 
@@ -13,24 +13,28 @@ export function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
   const [textIndex, setTextIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    const step = prefersReducedMotion ? 20 : 2;
+    const interval = prefersReducedMotion ? 40 : 40;
+
     const progressInterval = setInterval(() => {
-      setProgress(prev => {
+      setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + 2;
+        return prev + step;
       });
-    }, 40);
+    }, interval);
 
     return () => clearInterval(progressInterval);
-  }, []);
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
     const textInterval = setInterval(() => {
-      setTextIndex(prev => {
+      setTextIndex((prev) => {
         if (prev >= loadingTexts.length - 1) {
           clearInterval(textInterval);
           return prev;
@@ -44,12 +48,21 @@ export function LoadingScreen({ onComplete }) {
 
   useEffect(() => {
     if (progress >= 100) {
-      setTimeout(() => {
+      const delay = prefersReducedMotion ? 0 : 300;
+      const timeout = setTimeout(() => {
         setIsComplete(true);
-        setTimeout(onComplete, 500);
-      }, 300);
+        setTimeout(onComplete, prefersReducedMotion ? 0 : 500);
+      }, delay);
+      return () => clearTimeout(timeout);
     }
-  }, [progress, onComplete]);
+  }, [progress, onComplete, prefersReducedMotion]);
+
+  const blockAnimation = prefersReducedMotion
+    ? {}
+    : {
+        animate: { rotateY: 360 },
+        transition: { duration: 3, repeat: Infinity, ease: 'linear' },
+      };
 
   return (
     <AnimatePresence>
@@ -57,46 +70,57 @@ export function LoadingScreen({ onComplete }) {
         <motion.div
           className="loading-screen"
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
+          role="status"
+          aria-label="Loading portfolio"
         >
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
+            initial={prefersReducedMotion ? {} : { scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             className="flex flex-col items-center gap-8"
           >
-            {/* Minecraft-style block icon */}
             <div className="relative w-16 h-16">
               <motion.div
-                animate={{ rotateY: 360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                {...blockAnimation}
                 className="w-full h-full"
                 style={{ transformStyle: 'preserve-3d' }}
               >
-                <div className="absolute inset-0 bg-mc-grass border-4 border-mc-grass/80 shadow-pixel" 
-                     style={{ transform: 'translateZ(8px)' }} />
+                <div
+                  className="absolute inset-0 bg-mc-grass border-4 border-mc-grass/80 shadow-pixel"
+                  style={{ transform: 'translateZ(8px)' }}
+                />
               </motion.div>
             </div>
 
-            {/* Loading text */}
-            <motion.p
-              key={textIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="font-pixel text-xs text-pixel-accent"
-            >
-              {loadingTexts[textIndex]}
-            </motion.p>
+            <div aria-live="polite" aria-atomic="true">
+              <motion.p
+                key={textIndex}
+                initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="font-pixel text-xs text-pixel-accent"
+              >
+                {loadingTexts[textIndex]}
+              </motion.p>
+            </div>
 
-            {/* Progress bar */}
-            <div className="loading-bar">
+            <div
+              className="loading-bar"
+              role="progressbar"
+              aria-valuenow={progress}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label="Loading progress"
+            >
               <motion.div
                 className="loading-bar-fill"
                 style={{ width: `${progress}%` }}
               />
             </div>
 
-            {/* Progress percentage */}
-            <p className="font-pixel text-[10px] text-pixel-text-light/60 dark:text-pixel-text-dark/60">
+            <p
+              className="font-pixel text-[10px] text-pixel-text-light/60 dark:text-pixel-text-dark/60"
+              aria-hidden="true"
+            >
               {progress}%
             </p>
           </motion.div>

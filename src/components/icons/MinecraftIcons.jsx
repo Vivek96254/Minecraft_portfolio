@@ -1,8 +1,5 @@
 import React from 'react';
 
-// Pixel-art style icons inspired by Minecraft items
-// Each icon is an SVG with pixelated aesthetic
-
 export const PickaxeIcon = ({ className = "w-8 h-8" }) => (
   <svg className={className} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ imageRendering: 'pixelated' }}>
     <rect x="2" y="2" width="2" height="2" fill="#7B7B7B"/>
@@ -165,21 +162,49 @@ export const HeartIcon = ({ className = "w-8 h-8" }) => (
   </svg>
 );
 
-// Icon mapping for easy access
-export const iconMap = {
-  pickaxe: PickaxeIcon,
-  redstone: RedstoneIcon,
-  diamond: DiamondIcon,
-  chest: ChestIcon,
-  shield: ShieldIcon,
-  compass: CompassIcon,
-  book: BookIcon,
-  emerald: EmeraldIcon,
-  grass: GrassIcon,
-  ender: EnderIcon,
-  painting: PaintingIcon,
-  sword: SwordIcon,
-  heart: HeartIcon,
-};
+export const MinecraftAvatarIcon = ({ className = "w-32 h-32" }) => (
+  <svg
+    className={className}
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ imageRendering: 'pixelated' }}
+    aria-hidden="true"
+  >
+    {/* Head */}
+    <rect x="10" y="2" width="12" height="12" fill="#C68642" />
+    {/* Hair */}
+    <rect x="10" y="2" width="12" height="3" fill="#2D1B00" />
+    <rect x="10" y="5" width="2" height="1" fill="#2D1B00" />
+    <rect x="20" y="5" width="2" height="1" fill="#2D1B00" />
+    {/* Skin highlight */}
+    <rect x="12" y="5" width="4" height="2" fill="#D4954A" />
+    {/* Eyes */}
+    <rect x="12" y="8" width="2" height="2" fill="#3D2000" />
+    <rect x="18" y="8" width="2" height="2" fill="#3D2000" />
+    {/* Eye shine */}
+    <rect x="13" y="8" width="1" height="1" fill="#FFFFFF" />
+    <rect x="19" y="8" width="1" height="1" fill="#FFFFFF" />
+    {/* Mouth */}
+    <rect x="13" y="11" width="6" height="1" fill="#A0522D" />
+    {/* Body — green shirt */}
+    <rect x="8" y="14" width="16" height="10" fill="#4A8C5E" />
+    {/* Body highlight */}
+    <rect x="9" y="14" width="6" height="1" fill="#5BA36F" />
+    {/* Collar */}
+    <rect x="13" y="14" width="6" height="2" fill="#D4954A" />
+    {/* Arms */}
+    <rect x="4" y="14" width="4" height="10" fill="#C68642" />
+    <rect x="24" y="14" width="4" height="10" fill="#C68642" />
+    {/* Arm highlight */}
+    <rect x="5" y="14" width="2" height="2" fill="#D4954A" />
+    <rect x="25" y="14" width="2" height="2" fill="#D4954A" />
+    {/* Legs — dark pants */}
+    <rect x="8" y="24" width="7" height="6" fill="#345EC3" />
+    <rect x="17" y="24" width="7" height="6" fill="#345EC3" />
+    {/* Boots */}
+    <rect x="8" y="28" width="7" height="2" fill="#1A1814" />
+    <rect x="17" y="28" width="7" height="2" fill="#1A1814" />
+  </svg>
+);
 
-export const getIcon = (name) => iconMap[name] || DiamondIcon;
