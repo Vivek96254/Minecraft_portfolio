@@ -28,41 +28,50 @@ export const NAV_LINKS = [
 // Top two hero-featured projects — shown as full detailed cards
 export const FEATURED_PROJECTS = [
   {
-    id: 'fraud-lens',
-    name: 'Fraud Lens',
+    id: 'quickmart',
+    name: 'QuickMart',
     description:
-      'Enterprise transaction risk analytics engine built in Go. Hybrid pipeline: Redis Streams for real-time scoring (~45ms p50) and optional Kafka CDC for analytics. Combines a configurable rule engine, behavioral z-score analysis, and pluggable ML scoring with backtesting and A/B experiment support.',
+      'Production-grade quick-commerce platform (Blinkit-style). NestJS REST API, Next.js 14 web app, React Native + Expo mobile app, real-time Socket.IO order tracking, and Stripe + Razorpay payment processing.',
     features: [
-      'Hybrid Redis Streams + Kafka CDC pipeline',
-      'Rule engine + behavioral + ML hybrid scoring',
-      'Sub-100ms fast path for low-risk transactions',
-      'Backtesting and A/B experiment framework',
-      'Rate limiting, JWT auth, immutable audit trail',
+      'NestJS layered API with Prisma + PostgreSQL',
+      'React Native + Expo mobile app (iOS & Android)',
+      'Real-time order tracking via Socket.IO',
+      'Stripe & Razorpay payment + webhook handling',
+      'JWT auth with refresh tokens, RBAC, rate limiting',
     ],
-    tech: ['Go', 'PostgreSQL', 'Redis Streams', 'Kafka', 'Docker', 'JWT'],
-    github: `https://github.com/${GITHUB_USERNAME}/Fraud_Lens`,
+    tech: ['NestJS', 'Next.js', 'React Native', 'PostgreSQL', 'Redis', 'Stripe'],
+    github: `https://github.com/${GITHUB_USERNAME}/Quick_Commerce_Store_App`,
     live: null,
   },
   {
-    id: 'chess',
-    name: 'Real-time Chess Multiplayer',
+    id: 'repo-pilot',
+    name: 'Repo Pilot',
     description:
-      'Production-grade multiplayer chess platform. WebSocket-driven game sync, server-side move validation, spectator mode built on an event-bus architecture, and JWT session management.',
+      'AI-native CLI agent for autonomous codebase understanding. Implements a custom PLAN→EXECUTE→VERIFY→REFLECT loop — no LangChain, no abstractions. Durable SQLite memory, typed tool registry, and multi-provider LLM support (OpenAI, Anthropic, Cerebras).',
     features: [
-      'Live game rooms via WebSockets',
-      'Server-side move validation',
-      'Spectator mode with observer pattern',
-      'Public & private match lobbies',
-      'JWT auth & session management',
+      'Custom agentic loop: Plan → Execute → Verify → Reflect',
+      'Typed tool registry (read, write, search, run terminal)',
+      'Durable SQLite memory across sessions',
+      'Static architecture detection + LLM summarisation',
+      'Multi-provider: OpenAI · Anthropic · Cerebras',
     ],
-    tech: ['React', 'Node.js', 'WebSockets', 'PostgreSQL', 'Redis', 'JWT'],
-    github: `https://github.com/${GITHUB_USERNAME}/chess-app`,
+    tech: ['Python', 'SQLite', 'OpenAI', 'Anthropic', 'Docker', 'Typer'],
+    github: `https://github.com/${GITHUB_USERNAME}/Repo_Pilot`,
     live: null,
   },
 ];
 
 // Additional highlighted projects — shown as compact cards
 export const OTHER_PROJECTS = [
+  {
+    id: 'fraud-lens',
+    name: 'Fraud Lens',
+    description:
+      'Enterprise transaction risk engine in Go. Hybrid Redis Streams + Kafka CDC pipeline, rule engine + behavioral z-score + ML scoring, backtesting, and A/B experiments.',
+    tech: ['Go', 'PostgreSQL', 'Redis Streams', 'Kafka', 'Docker', 'JWT'],
+    github: `https://github.com/${GITHUB_USERNAME}/Fraud_Lens`,
+    live: null,
+  },
   {
     id: 'context-forge',
     name: 'Context Forge',
@@ -73,28 +82,19 @@ export const OTHER_PROJECTS = [
     live: null,
   },
   {
-    id: 'repo-pilot',
-    name: 'Repo Pilot',
+    id: 'chess',
+    name: 'Chess Multiplayer',
     description:
-      'AI-native CLI agent for autonomous codebase understanding. Custom PLAN→EXECUTE→VERIFY→REFLECT loop with durable SQLite memory, typed tool registry, and multi-provider LLM support.',
-    tech: ['Python', 'SQLite', 'OpenAI', 'Anthropic', 'Docker', 'Typer'],
-    github: `https://github.com/${GITHUB_USERNAME}/Repo_Pilot`,
-    live: null,
-  },
-  {
-    id: 'quickmart',
-    name: 'QuickMart',
-    description:
-      'Production-grade quick-commerce platform (Blinkit-style). NestJS REST API, Next.js web, React Native mobile app, real-time Socket.IO order tracking, Stripe + Razorpay payments.',
-    tech: ['NestJS', 'Next.js', 'React Native', 'PostgreSQL', 'Redis', 'Stripe'],
-    github: `https://github.com/${GITHUB_USERNAME}/Quick_Commerce_Store_App`,
+      'Real-time multiplayer chess with WebSocket game sync, server-side move validation, spectator mode, and JWT session management.',
+    tech: ['React', 'Node.js', 'WebSockets', 'PostgreSQL', 'Redis', 'JWT'],
+    github: `https://github.com/${GITHUB_USERNAME}/chess-app`,
     live: null,
   },
   {
     id: 'portfolio',
     name: 'This Portfolio',
     description:
-      'Minecraft-themed developer portfolio with React 19, live GitHub API integration, pixel-art CSS component library, scroll-spy navigation, and Framer Motion animations.',
+      'Minecraft-themed developer portfolio with React 19, pixel-art CSS component library, scroll-spy navigation, and Framer Motion animations.',
     tech: ['React 19', 'Vite 7', 'Tailwind CSS', 'Framer Motion'],
     github: `https://github.com/${GITHUB_USERNAME}/minecraft-portfolio`,
     live: null,
